@@ -4,6 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from contacts.api import WhateverResource
+whatever_resource = WhateverResource()
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -14,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^delete/(?P<pk>\d+)/$', views.DeleteContactView.as_view(),name='contacts-delete',),
     url(r'^(?P<pk>\d+)/$', views.ContactView.as_view(),name='contacts-view',),
     url(r'^edit/(?P<pk>\d+)/addresses$', views.EditContactAddressView.as_view(),name='contacts-edit-addresses',),
+    url(r'^api/', include(whatever_resource.urls)),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
