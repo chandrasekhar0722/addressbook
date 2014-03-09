@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from .models import Contact,Address
 from django.forms.models import inlineformset_factory
-#testing
+
 class ContactForm(forms.ModelForm):
     confirm_email = forms.EmailField(required=True,)
     class Meta:
